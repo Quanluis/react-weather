@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from 'axios';
 
 
 class App extends Component {
@@ -28,10 +27,6 @@ class App extends Component {
     e.preventDefault();
     console.log('Hello world');
     
-    const url = 'https://api.darksky.net/forecast/d9996f25aa69852f7e5ab45d115d2b6c/37.8267,-122.4233';
-    axios.get(url)
-    .then(Response => console.log(Response))
-    .catch(err =>  console.log(err));
   }
 
   render() {
