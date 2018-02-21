@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
+
 
 class App extends Component {
   constructor(){
@@ -10,6 +12,7 @@ class App extends Component {
     };
     this.handleLatChange = this.handleLatChange.bind(this);
     this.handleLonChange = this.handleLonChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleLatChange(e){
     this.setState({
@@ -21,12 +24,22 @@ class App extends Component {
       lon: +e.target.value
     })
   }
+  handleSubmit(e){
+    e.preventDefault();
+    console.log('Hello world');
+    
+    const url = 'https://api.darksky.net/forecast/d9996f25aa69852f7e5ab45d115d2b6c/37.8267,-122.4233';
+    axios.get(url)
+    .then(Response => console.log(Response))
+    .catch(err =>  console.log(err));
+  }
+
   render() {
     return (
       <div>
         <h1>React Weather</h1>
         <p>Enter your latitude and longitude to get the weather!</p>
-        <form>
+        <form onSubmit = {(e) => this.handleSubmit(e)}>
           <label>
             Latitude:
             <input type="number" 
