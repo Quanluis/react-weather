@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
 
 
 class App extends Component {
@@ -26,6 +27,8 @@ class App extends Component {
   handleSubmit(e){
     e.preventDefault();
     console.log('Hello world');
+    axios.get('/forecast/0,0')
+    .then(response => console.log(response));
     
   }
 
