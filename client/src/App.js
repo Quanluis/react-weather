@@ -1,21 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
+
 import { getWeather } from "./services/weather";
+import { isEmptyObject } from './utils';
 
-const CurrentWeather = props => {
-  return(
-    <section>
-      <ul>
-        <li>Time: {props.time}</li>
-        <li>Summary: {props.summary}</li>
-        <li>Icon: {props.icon}</li>
-        <li>Temperature {props.temperature}</li>
-      </ul>
-
-    </section>
-
-  );
-}
+import CurrentWeather from './CurrentWeather';
 
 class App extends Component {
   constructor() {
@@ -86,7 +75,7 @@ class App extends Component {
           <button type="submit">Get The Weather!</button>
         </form>
       
-        {Object.keys(this.state.currentWeather).length === 0 ? 
+        {isEmptyObject(this.state.currentWeather)?
         "" :
       <CurrentWeather {...this.state.currentWeather} />}
       </div>
